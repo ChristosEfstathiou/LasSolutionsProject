@@ -1,0 +1,8 @@
+CREATE TABLE customer_orders (
+    order_id NUMBER PRIMARY KEY,
+    customer_name VARCHAR2(100) NOT NULL,
+    order_date DATE DEFAULT SYSDATE NOT NULL,
+    status VARCHAR2(30) DEFAULT 'RECEIVED' NOT NULL,
+    CONSTRAINT chk_customer_orders_status
+        CHECK (status IN ('RECEIVED', 'UNDER_PROCEDURE', 'COMPLETED', 'FAILED'))
+);

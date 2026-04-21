@@ -1,0 +1,14 @@
+CREATE TABLE locations (
+    location_id NUMBER PRIMARY KEY,
+    location_code VARCHAR2(30) NOT NULL UNIQUE,
+    zone VARCHAR2(30) NOT NULL,
+    is_refrigerated CHAR(1) NOT NULL,
+    capacity NUMBER NOT NULL,
+    used_capacity NUMBER DEFAULT 0 NOT NULL,
+    CONSTRAINT chk_locations_refrigeration
+        CHECK (is_refrigerated IN ('Y', 'N')),
+    CONSTRAINT chk_locations_capacity
+        CHECK (capacity >= 0),
+    CONSTRAINT chk_locations_used_capacity
+        CHECK (used_capacity >= 0 AND used_capacity <= capacity)
+);

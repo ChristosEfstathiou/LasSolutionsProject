@@ -1,0 +1,12 @@
+CREATE TABLE order_lines (
+    order_line_id NUMBER PRIMARY KEY,
+    order_id NUMBER NOT NULL,
+    product_id NUMBER NOT NULL,
+    quantity NUMBER NOT NULL,
+    CONSTRAINT fk_order_lines_order
+        FOREIGN KEY (order_id) REFERENCES customer_orders(order_id),
+    CONSTRAINT fk_order_lines_product
+        FOREIGN KEY (product_id) REFERENCES products(product_id),
+    CONSTRAINT chk_order_lines_quantity
+        CHECK (quantity > 0)
+);

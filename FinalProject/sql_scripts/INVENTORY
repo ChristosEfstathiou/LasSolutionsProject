@@ -1,0 +1,14 @@
+CREATE TABLE inventory (
+    inventory_id NUMBER PRIMARY KEY,
+    product_id NUMBER NOT NULL,
+    location_id NUMBER NOT NULL,
+    quantity NUMBER NOT NULL,
+    CONSTRAINT fk_inventory_product
+        FOREIGN KEY (product_id) REFERENCES products(product_id),
+    CONSTRAINT fk_inventory_location
+        FOREIGN KEY (location_id) REFERENCES locations(location_id),
+    CONSTRAINT chk_inventory_quantity
+        CHECK (quantity >= 0),
+    CONSTRAINT uq_inventory_product_location
+        UNIQUE (product_id, location_id)
+);
