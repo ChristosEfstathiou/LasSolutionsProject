@@ -1,0 +1,7 @@
+product_id,product_name,requires_refrigeration,unit_of_measure
+1,Milk,Y,PCS
+2,Yogurt,Y,PCS
+3,Cheese,Y,PCS
+4,Rice,N,PCS
+5,Pasta,N,PCS
+6,Cereal,N,PCS

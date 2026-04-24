@@ -1,0 +1,234 @@
+
+[STEP 1] Testing database connection...
+
+USER
+--------------------------------------------------------------------------------
+WAREHOUSE
+
+
+[STEP 2] Dropping old schema objects...
+
+PL/SQL procedure successfully completed.
+
+
+PL/SQL procedure successfully completed.
+
+
+PL/SQL procedure successfully completed.
+
+
+PL/SQL procedure successfully completed.
+
+
+PL/SQL procedure successfully completed.
+
+
+PL/SQL procedure successfully completed.
+
+
+PL/SQL procedure successfully completed.
+
+
+PL/SQL procedure successfully completed.
+
+
+PL/SQL procedure successfully completed.
+
+
+PL/SQL procedure successfully completed.
+
+
+PL/SQL procedure successfully completed.
+
+
+PL/SQL procedure successfully completed.
+
+
+PL/SQL procedure successfully completed.
+
+
+PL/SQL procedure successfully completed.
+
+
+PL/SQL procedure successfully completed.
+
+
+PL/SQL procedure successfully completed.
+
+Schema cleanup completed.
+
+[STEP 3] Creating schema...
+
+Sequence created.
+
+
+Sequence created.
+
+
+Sequence created.
+
+
+Sequence created.
+
+
+Sequence created.
+
+
+Sequence created.
+
+
+Sequence created.
+
+
+Sequence created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Index created.
+
+
+Index created.
+
+
+Index created.
+
+
+Index created.
+
+
+Index created.
+
+Schema creation completed.
+
+[STEP 4] Inserting sample data...
+==========================================
+ FlowCore Master Data Loader
+==========================================
+config/receiving.conf: line 4: //for: No such file or directory
+[INFO] Configuration loaded from config/receiving.conf
+[STEP 1] Clearing existing master data...
+
+0 rows deleted.
+
+
+0 rows deleted.
+
+
+0 rows deleted.
+
+
+Commit complete.
+
+[STEP 2] Loading products...
+
+1 row created.
+
+
+Commit complete.
+
+
+1 row created.
+
+
+Commit complete.
+
+
+1 row created.
+
+
+Commit complete.
+
+
+1 row created.
+
+
+Commit complete.
+
+
+1 row created.
+
+
+Commit complete.
+
+
+1 row created.
+
+
+Commit complete.
+
+[STEP 3] Loading locations...
+
+1 row created.
+
+
+Commit complete.
+
+
+1 row created.
+
+
+Commit complete.
+
+
+1 row created.
+
+
+Commit complete.
+
+
+1 row created.
+
+
+Commit complete.
+
+
+1 row created.
+
+
+Commit complete.
+
+
+1 row created.
+
+
+Commit complete.
+
+[DONE] Master data loaded successfully.
+
+[STEP 5] Creating PL/SQL receiving logic...
+
+Procedure created.
+
+
+Function created.
+
+
+Procedure created.
+
+
+[DONE] Full rebuild completed successfully.
+Finished at: Fri Apr 24 19:06:01 EEST 2026
+Log saved to: logs/full_rebuild_20260424_190555.txt

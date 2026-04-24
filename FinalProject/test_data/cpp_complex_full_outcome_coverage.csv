@@ -1,0 +1,25 @@
+test_id,product_id,requires_refrigeration,quantity,expected_cpp_exit,expected_db_status,description
+OC01,999,Y,10,0,REJECTED,Invalid product id is rejected when capacity exists
+OC02,1,Y,80,0,PROCESSED,Cold product exactly fits smallest refrigerated location FR-B1
+OC03,2,Y,20,0,PROCESSED,Cold product uses remaining space in same best-fit cold location
+OC04,3,Y,80,0,PROCESSED,Cold product usesremaining 80-capacity from the refrigerated location with 20 used capacity
+OC05,1,Y,100,0,PROCESSED,Cold product uses final 100-capacity refrigerated location
+OC06,2,Y,1,2,SKIPPED,Cold product fails because refrigerated storage is full
+OC07,5,N,120,0,PROCESSED,Dry product exactly fits smallest dry location DR-B1
+OC08,4,N,30,0,PROCESSED,Dry product uses remaining space in best-fit dry location
+OC09,5,N,120,0,PROCESSED,Dry product uses final remaining 120 free capacity from the already partially filled dry location
+OC10,6,N,150,0,PROCESSED,Dry product uses 150-capacity dry location
+OC11,4,N,1,2,SKIPPED,Dry product fails because dry storage is full
+OC12,1,Y,0,1,SKIPPED,Zero quantity is rejected by C++
+OC13,1,Y,-5,1,SKIPPED,Negative cold quantity is rejected by C++
+OC14,5,N,-10,1,SKIPPED,Negative dry quantity is rejected by C++
+OC15,1,X,10,1,SKIPPED,Invalid refrigeration flag is rejected by C++
+OC16,999,Y,10,2,SKIPPED,Invalid product id is not reached because cold storage is full
+OC17,999,N,10,2,SKIPPED,Invalid product id is not reached because dry storage is full
+OC18,1,Y,999,2,SKIPPED,Huge cold quantity fails due to insufficient single-location capacity
+OC19,5,N,999,2,SKIPPED,Huge dry quantity fails due to insufficient single-location capacity
+OC20,2,Y,1000,2,SKIPPED,Very large refrigerated request fails
+OC21,6,N,1000,2,SKIPPED,Very large dry request fails
+OC22,999,Y,10,2,SKIPPED,Invalid product id is not reached when storage is already full
+OC23,1,N,10,1,SKIPPED,Milk requires refrigeration in master data but CSV marks it as dry we skip it so it can be processed manually 
+OC24,5,Y,10,1,SKIPPED,Pasta is dry in master data but CSV marks it as refrigerated we skip it so it can be processed manually 

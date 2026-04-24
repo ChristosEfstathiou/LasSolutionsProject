@@ -1,0 +1,2 @@
+test_id,product_id,requires_refrigeration,quantity,expected_cpp_exit,expected_db_status,description
+S04,5,N,30,0,PROCESSED,Pasta is stored successfully in dry location

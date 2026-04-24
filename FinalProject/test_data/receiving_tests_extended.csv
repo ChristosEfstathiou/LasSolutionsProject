@@ -1,0 +1,16 @@
+test_id,product_id,quantity,expected_status,description
+TC01,1,25,PROCESSED,New refrigerated product Milk is stored in available cold location
+TC02,5,30,PROCESSED,New dry product Pasta is stored in available dry location
+TC03,2,40,PROCESSED,New refrigerated product Yogurt is stored in available cold location
+TC04,6,60,PROCESSED,New dry product Cereal is stored in available dry location
+TC05,3,10,PROCESSED,New refrigerated product Cheese is stored in available cold location
+TC06,4,20,PROCESSED,New dry product Rice is stored in available dry location
+TC07,1,999,FAILED,Refrigerated product fails when quantity exceeds all cold location capacity
+TC08,5,999,FAILED,Dry product fails when quantity exceeds all dry location capacity
+TC09,2,50,PROCESSED,Refrigerated product is stored using remaining cold capacity
+TC10,6,90,PROCESSED,Dry product is stored using remaining dry capacity
+TC11,999,10,REJECTED,Invalid product id is rejected by database constraint
+TC12,1,0,REJECTED,Zero quantity is rejected by quantity constraint
+TC13,1,-5,REJECTED,Negative quantity is rejected by quantity constraint
+TC14,3,200,FAILED,Cold product fails when no single cold location can fit quantity
+TC15,4,300,FAILED,Dry product fails when no single dry location can fit quantity

@@ -1,0 +1,2 @@
+test_id,product_id,requires_refrigeration,quantity,expected_cpp_exit,expected_db_status,description
+S06,6,N,100,0,PROCESSED,Cereal is stored successfully in dry location

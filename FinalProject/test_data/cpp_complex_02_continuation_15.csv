@@ -1,0 +1,16 @@
+test_id,product_id,requires_refrigeration,quantity,expected_cpp_exit,expected_db_status,description
+CX21,1,Y,1,2,SKIPPED,Milk fails because refrigerated storage remains full
+CX22,2,Y,5,2,SKIPPED,Yogurt fails because no cold capacity remains
+CX23,3,Y,10,2,SKIPPED,Cheese fails because no cold capacity remains
+CX24,5,N,1,2,SKIPPED,Pasta fails because dry storage remains full
+CX25,4,N,5,2,SKIPPED,Rice fails because no dry capacity remains
+CX26,6,N,10,2,SKIPPED,Cereal fails because no dry capacity remains
+CX27,999,Y,10,2,SKIPPED,Invalid product id is not reached because cold capacity is full
+CX28,999,N,10,2,SKIPPED,Invalid product id is not reached because dry capacity is full
+CX29,1,Y,0,1,SKIPPED,Zero quantity rejected during continuation
+CX30,5,N,-5,1,SKIPPED,Negative quantity rejected during continuation
+CX31,1,X,10,1,SKIPPED,Invalid refrigeration flag rejected during continuation
+CX32,2,Y,1000,2,SKIPPED,Very large refrigerated request fails during continuation
+CX33,6,N,1000,2,SKIPPED,Very large dry request fails during continuation
+CX34,3,Y,80,2,SKIPPED,Exact cold location request fails because all cold locations were already consumed
+CX35,4,N,120,2,SKIPPED,Exact dry location request fails because all dry locations were already consumed

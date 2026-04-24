@@ -1,0 +1,2 @@
+test_id,product_id,requires_refrigeration,quantity,expected_cpp_exit,expected_db_status,description
+S02,2,Y,40,0,PROCESSED,Yogurt is stored successfully in refrigerated location
