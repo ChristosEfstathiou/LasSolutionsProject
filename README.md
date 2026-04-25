@@ -97,5 +97,5 @@ g++ -o stock_allocation stock_allocation.cpp
 
 ## Author
 
-Person 2 — Outbound Operations  
+Bardi Alnto — Outbound Operations  
 Junior Software Commissioning Engineer Bootcamp — April 2026
