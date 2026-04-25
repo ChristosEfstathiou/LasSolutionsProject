@@ -4,9 +4,11 @@
 
 This document describes the complete inbound receiving simulation implemented for the FlowCore warehouse commissioning project. It covers the integrated use of Linux/Bash, Oracle SQL & PL/SQL, C++, configuration files, automated testing, reporting, and validation.
 
+Bash orchestrates the process, C++ simulates allocation decisions, and Oracle performs final transactional updates.
+
 The inbound module simulates how a food warehouse receives products, selects suitable storage locations, updates inventory, and validates technical behavior through repeatable automated tests.
 
----
+- - - 
 
 # 1. Business Scenario
 
@@ -14,8 +16,8 @@ A food warehouse receives incoming goods from suppliers and stores them in inter
 
 Products are divided into two categories:
 
-* Refrigerated products
-* Dry products
+- Refrigerated products
+- Dry products
 
 The system must:
 
@@ -27,40 +29,40 @@ The system must:
 6. Produce logs and validation reports
 7. Support automated testing
 
----
+- - - 
 
 # 2. Functional Scope
 
 ## Included
 
-* Product master data
-* Warehouse locations with capacities
-* Receipt processing
-* Putaway logic
-* Inventory tracking
-* Oracle database updates
-* C++ allocation engine
-* CSV-driven automated tests
-* Delta logs after each test
-* Bash orchestration scripts
-* Rebuild / cleanup utilities
+- Product master data
+- Warehouse locations with capacities
+- Receipt processing
+- Putaway logic
+- Inventory tracking
+- Oracle database updates
+- C++ allocation engine
+- CSV- driven automated tests
+- Delta logs after each test
+- Bash orchestration scripts
+- Rebuild / cleanup utilities
 
 ## Excluded
 
-* Barcode scanners
-* Real ERP integration
-* Multi-user concurrency
-* Web UI
-* Advanced product categories
-* Route optimization
+- Barcode scanners
+- Real ERP integration
+- Multi- user concurrency
+- Web UI
+- Advanced product categories
+- Route optimization
 
----
+- - - 
 
 # 3. Technology Stack
 
 ## Linux / WSL2
 
-Used for all command-line execution and automation.
+Used for all command- line execution and automation.
 
 ## Docker Desktop
 
@@ -86,7 +88,7 @@ Used as an external decision engine for putaway allocation.
 
 Used for source/version control.
 
----
+- - - 
 
 # 4. Database Design
 
@@ -96,68 +98,68 @@ Used for source/version control.
 
 Stores product master data.
 
-* product_id
-* product_name
-* requires_refrigeration
-* unit_of_measure
+- product_id
+- product_name
+- requires_refrigeration
+- unit_of_measure
 
 ## LOCATIONS
 
 Stores warehouse locations.
 
-* location_id
-* location_code
-* zone
-* is_refrigerated
-* capacity
-* used_capacity
+- location_id
+- location_code
+- zone
+- is_refrigerated
+- capacity
+- used_capacity
 
 ## INVENTORY
 
 Stores current stock by product/location.
 
-* inventory_id
-* product_id
-* location_id
-* quantity
+- inventory_id
+- product_id
+- location_id
+- quantity
 
 ## RECEIPTS
 
 Stores inbound receipts.
 
-* receipt_id
-* supplier_name
-* receipt_date
-* status
+- receipt_id
+- supplier_name
+- receipt_date
+- status
 
 Statuses:
 
-* RECEIVED
-* PROCESSED
-* FAILED
-* REJECTED
+- RECEIVED
+- PROCESSED
+- FAILED
+- REJECTED
 
 ## RECEIPT_LINES
 
 Stores products per receipt.
 
-* receipt_line_id
-* receipt_id
-* product_id
-* quantity
+- receipt_line_id
+- receipt_id
+- product_id
+- quantity
 
 ## EVENT_LOG
 
 Stores operational events.
 
-* event_id
-* event_type
-* reference_type
-* reference_id
-* message
-* created_at
+- event_id
+- event_type
+- reference_type
+- reference_id
+- message
+- created_at
 
----
+- - - 
 
 # 5. Core Receiving Logic
 
@@ -169,19 +171,19 @@ A supplier delivers products and quantities.
 
 The system validates:
 
-* product exists
-* quantity > 0
-* suitable location exists
-* capacity available
+- product exists
+- quantity > 0
+- suitable location exists
+- capacity available
 
 ## Putaway Rule
 
 Products must be stored in locations where:
 
-* refrigeration matches product requirement
-* enough free capacity exists
+- refrigeration matches product requirement
+- enough free capacity exists
 
-## Best-Fit Allocation Rule
+## Best- Fit Allocation Rule
 
 The system chooses:
 
@@ -197,19 +199,19 @@ If an existing location already contains the same product and can fit the quanti
 
 If successful:
 
-* inventory increases
-* location used_capacity increases
-* receipt status = PROCESSED
+- inventory increases
+- location used_capacity increases
+- receipt status = PROCESSED
 
 If no location fits:
 
-* receipt status = FAILED
+- receipt status = FAILED
 
 If input is invalid:
 
-* receipt status = REJECTED
+- the row is skipped and logged in event_log no receipt_line is created
 
----
+- - - 
 
 # 6. PL/SQL Components
 
@@ -221,16 +223,16 @@ Returns the best location according to warehouse rules.
 
 Processes receipt lines and updates:
 
-* inventory
-* locations
-* receipts
-* event_log
+- inventory
+- locations
+- receipts
+- event_log
 
-## process_receipt_from_cli.sql
+## process_receipt_from_cli_multiple_products.sql
 
-Used by Bash automation to insert and process one receipt from command line inputs.
+Used by Bash automation to create one receipt, insert all valid staged receipt lines, and call process_receipt.
 
----
+- - - 
 
 # 7. C++ Allocation Engine
 
@@ -242,22 +244,22 @@ It reads warehouse state from CSV and decides if storage is possible.
 
 ## Inputs
 
-* refrigeration flag (Y/N)
-* quantity
-* CSV location file
-* update state flag
+- refrigeration flag (Y/N)
+- quantity
+- CSV location file
+- update state flag
 
 ## Outputs
 
-* selected location
-* reason for selection
-* exit code
+- selected location
+- reason for selection
+- exit code
 
 ## Exit Codes
 
-* 0 = success
-* 1 = invalid input
-* 2 = no suitable location found
+- 0 = success
+- 1 = invalid input
+- 2 = no suitable location found
 
 ## Dynamic State Mode
 
@@ -269,13 +271,13 @@ This means later tests use the updated warehouse state.
 
 If C++ succeeds but Oracle rejects the transaction, the CSV state is rolled back automatically to keep both systems synchronized.
 
----
+- - - 
 
 # 8. Automation Scripts
 
 ## run_inbound_flow_multiple_products.sh
 
-Main end-to-end simulation.
+Main end- to- end simulation.
 
 ### Steps
 
@@ -304,7 +306,7 @@ Deletes simulation data and logs.
 
 Interactive control panel for running all project functions.
 
----
+- - - 
 
 # 9. Test Frameworks
 
@@ -314,23 +316,23 @@ CSV files drive receipt processing tests.
 
 Example checks:
 
-* valid receipt processed
-* no capacity available
-* invalid product id
-* zero quantity
-* negative quantity
-* continuation tests after previous runs
+- valid receipt processed
+- no capacity available
+- invalid product id
+- zero quantity
+- negative quantity
+- continuation tests after previous runs
 
 ## C++ + DB Integration Tests
 
 CSV files test:
 
-* allocator decisions
-* Oracle updates
-* rollback logic
-* DB constraint rejection
+- allocator decisions
+- Oracle updates
+- rollback logic
+- DB constraint rejection
 
----
+- - - 
 
 # 10. Delta Logs
 
@@ -338,15 +340,15 @@ A delta log is created for every test case.
 
 Each file includes:
 
-* test input
-* expected vs actual results
-* C++ output
-* DB output
-* warehouse state after test
+- test input
+- expected vs actual results
+- C++ output
+- DB output
+- warehouse state after test
 
 This provides full traceability.
 
----
+- - - 
 
 # 11. Example Validation Scenario
 
@@ -354,14 +356,24 @@ This provides full traceability.
 
 Input:
 
-* product_id = 999
-* quantity = 10
+- product_id = 999
+- quantity = 10
 
 Result:
 
-* C++ finds a location
-* Oracle rejects foreign key
-* CSV state rolls back
-* Final result = PASS (expected rejection)
+- Product does not exist in Oracle master data
+- Line is skipped before allocation
+- Event logged as RECEIPT_LINE_SKIPPED
+- No receipt_line created
+- Final result = PASS (expected skip)
 
+## Event Types
 
+The system logs:
+
+- RECEIPT_LINE_SKIPPED
+- RECEIPT_PROCESS_START
+- PRODUCT_STORED
+- RECEIPT_PROCESSED
+- RECEIPT_FAILED
+- RECEIPT_ERROR

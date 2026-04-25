@@ -46,7 +46,7 @@ Future enhancement:
 
 ---
 
-# 3. C++ Allocator Is a Decision Engine
+# 3. C++ Allocator Is a Pre-Processing Decision Engine
 
 The C++ module is responsible for:
 
@@ -218,7 +218,7 @@ The system would block invalid storage combinations.
 
 # 9. Security Model
 
-This academic project uses local configuration files for database credentials.
+This training project uses local configuration files for database credentials.
 
 Future enhancement:
 

@@ -97,14 +97,12 @@ Each test generates detailed logs containing:
 
 Configuration file:
 
-```text
 config/receiving.conf
 
 ### Recommended Demo Execution Flow
 
 Run the main control menu:
 
-```bash
 ./scripts/master_menu.sh
 
 From the menu, follow this sequence:
@@ -131,7 +129,7 @@ Use this when you want a completely clean environment.
 
 This runs:
 
-./scripts/run_inbound_flow.sh
+./scripts/run_inbound_flow_multiple_products.sh
 
 The menu will display all available inbound CSV test files.
 
@@ -142,7 +140,7 @@ or press Enter to run the default file
 
 Default file:
 
-test_data/cpp_multiple_product_after_master_update.csv
+test_data/cpp_multiple_product_full_outcome_coverage.csv
 
 The inbound flow performs:
 
@@ -269,4 +267,4 @@ Why it is not the primary method:
 - it is less representative of the final production process
 
 Current recommendation:
-Use the integrated inbound flow (`run_inbound_flow.sh`) as the main demonstration path, and keep the SQL-only option as a technical validation / diagnostic tool.
+Use the integrated inbound flow (`run_inbound_flow_multiple_products.sh`) as the main demonstration path, and keep the SQL-only option as a technical validation / diagnostic tool.
