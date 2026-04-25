@@ -7,7 +7,24 @@ source scripts/load_config.sh
 TIMESTAMP=$(date +"%Y-%m-%d %H:%M:%S")
 REPORT_FILE="logs/inbound_validation_report.txt"
 
-SQLPLUS_CMD="sqlplus -s ${DB_USER}/${DB_PASS}@//${DB_HOST}:${DB_PORT}/${DB_SERVICE}"
+SQLPLUS_CMD="sqlplus -L -s ${DB_USER}/${DB_PASS}@//${DB_HOST}:${DB_PORT}/${DB_SERVICE}"
+
+echo ""
+echo "Checking database connection..."
+
+$SQLPLUS_CMD <<EOF
+WHENEVER OSERROR EXIT 1
+WHENEVER SQLERROR EXIT SQL.SQLCODE
+SELECT USER FROM dual;
+EXIT;
+EOF
+
+if [ $? -ne 0 ]; then
+    echo "[ERROR] Database connection failed."
+    echo "[ERROR] Please check that Docker Desktop is running and the Oracle container is started."
+    echo "[ERROR] You can start it with: docker start oracle-db"
+    exit 1
+fi
 
 cat > "$REPORT_FILE" <<EOF
 ============================================================
