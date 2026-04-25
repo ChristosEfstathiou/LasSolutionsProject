@@ -1,0 +1,7 @@
+test_id,supplier_name,product_id,requires_refrigeration,quantity,expected_cpp_exit,expected_db_status,description
+F01,Full Supplier,1,Y,80,0,PROCESSED,Milk fills FR-B1
+F02,Full Supplier,2,Y,100,0,PROCESSED,Yogurt fills FR-A1
+F03,Full Supplier,3,Y,100,0,PROCESSED,Cheese fills FR-A2
+F04,Full Supplier,4,N,120,0,PROCESSED,Rice fills DR-B1
+F05,Full Supplier,5,N,150,0,PROCESSED,Pasta fills DR-A1
+F06,Full Supplier,6,N,150,0,PROCESSED,Cereal fills DR-A2
