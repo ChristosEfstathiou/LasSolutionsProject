@@ -229,6 +229,35 @@ Future enhancement:
 
 ---
 
+# 10. Rejected Lines Are Logged, Not Stored as Receipt Lines
+
+In the current design, CSV rows that fail validation do **not** create records in the `receipt_lines` table.
+
+Examples:
+
+- Invalid product ID
+- Wrong refrigeration flag
+- Zero or negative quantity
+- No available storage capacity
+
+Only validated and operationally accepted rows become `receipt_lines`.
+
+### Why This Design Was Chosen
+
+The project separates business transactions from exceptions:
+
+Operational data  -> receipts / receipt_lines / inventory
+Exceptions        -> event_log
+
+Future Enhancement:
+
+A future version could allow rejected rows to be inserted into receipt_lines with a processing status column, enabling:
+
+Partial receipt acceptance
+Exception handling workflows
+User correction and reprocessing
+Richer operational reporting
+
 # Final Note
 
 These limitations do not prevent successful inbound receiving execution for the project scope.  
