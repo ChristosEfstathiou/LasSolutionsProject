@@ -1,0 +1,487 @@
+============================== 
+WAREHOUSE RUN - Sat 04/25/2026 13:05:19.45 
+============================== 
+[SCHEMA] 
+
+SQL*Plus: Release 21.0.0.0.0 - Production on Sat Apr 25 13:05:19 2026
+Version 21.3.0.0.0
+
+Copyright (c) 1982, 2021, Oracle.  All rights reserved.
+
+Last Successful login time: Sat Apr 25 2026 13:03:17 +03:00
+
+Connected to:
+Oracle Database 21c Express Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+
+PL/SQL procedure successfully completed.
+
+
+PL/SQL procedure successfully completed.
+
+
+PL/SQL procedure successfully completed.
+
+
+PL/SQL procedure successfully completed.
+
+
+PL/SQL procedure successfully completed.
+
+
+PL/SQL procedure successfully completed.
+
+
+PL/SQL procedure successfully completed.
+
+
+PL/SQL procedure successfully completed.
+
+
+PL/SQL procedure successfully completed.
+
+
+PL/SQL procedure successfully completed.
+
+
+PL/SQL procedure successfully completed.
+
+
+PL/SQL procedure successfully completed.
+
+
+PL/SQL procedure successfully completed.
+
+
+PL/SQL procedure successfully completed.
+
+
+PL/SQL procedure successfully completed.
+
+
+PL/SQL procedure successfully completed.
+
+
+Sequence created.
+
+
+Sequence created.
+
+
+Sequence created.
+
+
+Sequence created.
+
+
+Sequence created.
+
+
+Sequence created.
+
+
+Sequence created.
+
+
+Sequence created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+Disconnected from Oracle Database 21c Express Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+[SAMPLE DATA] 
+
+SQL*Plus: Release 21.0.0.0.0 - Production on Sat Apr 25 13:05:21 2026
+Version 21.3.0.0.0
+
+Copyright (c) 1982, 2021, Oracle.  All rights reserved.
+
+Last Successful login time: Sat Apr 25 2026 13:05:19 +03:00
+
+Connected to:
+Oracle Database 21c Express Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+
+0 rows deleted.
+
+
+0 rows deleted.
+
+
+0 rows deleted.
+
+
+0 rows deleted.
+
+
+0 rows deleted.
+
+
+0 rows deleted.
+
+
+0 rows deleted.
+
+
+0 rows deleted.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+Commit complete.
+
+Disconnected from Oracle Database 21c Express Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+[PROCEDURE] 
+
+SQL*Plus: Release 21.0.0.0.0 - Production on Sat Apr 25 13:05:22 2026
+Version 21.3.0.0.0
+
+Copyright (c) 1982, 2021, Oracle.  All rights reserved.
+
+Last Successful login time: Sat Apr 25 2026 13:05:21 +03:00
+
+Connected to:
+Oracle Database 21c Express Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+
+Procedure created.
+
+Disconnected from Oracle Database 21c Express Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+[TESTS] 
+
+SQL*Plus: Release 21.0.0.0.0 - Production on Sat Apr 25 13:05:22 2026
+Version 21.3.0.0.0
+
+Copyright (c) 1982, 2021, Oracle.  All rights reserved.
+
+Last Successful login time: Sat Apr 25 2026 13:05:22 +03:00
+
+Connected to:
+Oracle Database 21c Express Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+
+Function created.
+
+=== TEST 1: enough stock - expected COMPLETED ===
+TEST 1 OK - COMPLETED
+
+PL/SQL procedure successfully completed.
+
+=== TEST 2: enough stock order 2 - expected COMPLETED ===
+TEST 2 OK - COMPLETED
+
+PL/SQL procedure successfully completed.
+
+=== TEST 3: stock reduced after COMPLETED orders ===
+TEST 3 OK - Milk=40 Yogurt=25 Rice=60 Pasta=45
+
+PL/SQL procedure successfully completed.
+
+=== TEST 4: not enough stock - expected FAILED ===
+TEST 4 OK - FAILED
+
+PL/SQL procedure successfully completed.
+
+=== TEST 5: one product missing - expected FAILED ===
+TEST 5 OK - FAILED
+
+PL/SQL procedure successfully completed.
+
+=== TEST 6: event log entries exist ===
+TEST 6 OK - 4 entries found
+
+PL/SQL procedure successfully completed.
+
+=== TEST 7: low stock report ===
+TEST 7 OK - 1 products below stock limit
+
+PL/SQL procedure successfully completed.
+
+=== TEST 8: has_sufficient_stock ===
+TEST 8a OK - Rice qty=10 returns Y
+TEST 8b OK - Rice qty=9999 returns N
+
+PL/SQL procedure successfully completed.
+
+=== TESTS DONE ===
+Disconnected from Oracle Database 21c Express Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+[REPORT] 
+
+SQL*Plus: Release 21.0.0.0.0 - Production on Sat Apr 25 13:05:23 2026
+Version 21.3.0.0.0
+
+Copyright (c) 1982, 2021, Oracle.  All rights reserved.
+
+Last Successful login time: Sat Apr 25 2026 13:05:22 +03:00
+
+Connected to:
+Oracle Database 21c Express Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+
+PRODUCT_ID
+----------
+PRODUCT_NAME
+--------------------------------------------------------------------------------
+R UNIT_OF_MEASURE
+- --------------------
+	 1
+Milk
+Y PCS
+
+	 2
+Yogurt
+Y PCS
+
+PRODUCT_ID
+----------
+PRODUCT_NAME
+--------------------------------------------------------------------------------
+R UNIT_OF_MEASURE
+- --------------------
+
+	 3
+Cheese
+Y PCS
+
+	 4
+Rice
+
+PRODUCT_ID
+----------
+PRODUCT_NAME
+--------------------------------------------------------------------------------
+R UNIT_OF_MEASURE
+- --------------------
+N PCS
+
+	 5
+Pasta
+N PCS
+
+	 6
+
+PRODUCT_ID
+----------
+PRODUCT_NAME
+--------------------------------------------------------------------------------
+R UNIT_OF_MEASURE
+- --------------------
+Cereal
+N PCS
+
+
+6 rows selected.
+
+
+INVENTORY_ID PRODUCT_ID LOCATION_ID   QUANTITY
+------------ ---------- ----------- ----------
+	   1	      1 	  1	    40
+	   2	      2 	  1	    25
+	   3	      3 	  2	    40
+	   4	      4 	  4	    60
+	   5	      5 	  5	    45
+	   6	      6 	  6	    70
+
+6 rows selected.
+
+
+  ORDER_ID
+----------
+CUSTOMER_NAME
+--------------------------------------------------------------------------------
+ORDER_DAT STATUS
+--------- ------------------------------
+	 1
+Cold Customer
+25-APR-26 COMPLETED
+
+	 2
+Dry Customer
+25-APR-26 COMPLETED
+
+  ORDER_ID
+----------
+CUSTOMER_NAME
+--------------------------------------------------------------------------------
+ORDER_DAT STATUS
+--------- ------------------------------
+
+	 3
+No Stock Customer
+25-APR-26 FAILED
+
+	 4
+Partial Stock Customer
+
+  ORDER_ID
+----------
+CUSTOMER_NAME
+--------------------------------------------------------------------------------
+ORDER_DAT STATUS
+--------- ------------------------------
+25-APR-26 FAILED
+
+
+
+ORDER_LINE_ID	ORDER_ID PRODUCT_ID   QUANTITY
+------------- ---------- ---------- ----------
+	    1	       1	  1	    10
+	    2	       1	  2	     5
+	    3	       2	  4	    20
+	    4	       2	  5	    15
+	    5	       3	  1	  9999
+	    6	       4	  4	    10
+	    7	       4	  5	  9999
+
+7 rows selected.
+
+
+  EVENT_ID EVENT_TIM EVENT_TYPE
+---------- --------- --------------------------------------------------
+REFERENCE_TYPE		       REFERENCE_ID
+------------------------------ ------------
+MESSAGE
+--------------------------------------------------------------------------------
+	 1 25-APR-26 INIT
+SYSTEM
+Reloaded sample data
+
+	 2 25-APR-26 ORDER
+ORDER					  1
+Order completed successfully
+
+  EVENT_ID EVENT_TIM EVENT_TYPE
+---------- --------- --------------------------------------------------
+REFERENCE_TYPE		       REFERENCE_ID
+------------------------------ ------------
+MESSAGE
+--------------------------------------------------------------------------------
+
+	 3 25-APR-26 ORDER
+ORDER					  2
+Order completed successfully
+
+	 4 25-APR-26 ORDER
+ORDER					  3
+
+  EVENT_ID EVENT_TIM EVENT_TYPE
+---------- --------- --------------------------------------------------
+REFERENCE_TYPE		       REFERENCE_ID
+------------------------------ ------------
+MESSAGE
+--------------------------------------------------------------------------------
+Order failed due to insufficient stock
+
+	 5 25-APR-26 ORDER
+ORDER					  4
+Order failed due to insufficient stock
+
+
+Disconnected from Oracle Database 21c Express Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+============================== 
+DONE - Sat 04/25/2026 13:05:23.17 
+============================== 
