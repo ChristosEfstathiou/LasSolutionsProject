@@ -37,6 +37,7 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "[STEP 3] Exporting current DB location state for C++..."
+# Export current Oracle warehouse location state to CSV for the C++ allocator
 $SQLPLUS_CMD @sql/export_locations_for_cpp.sql
 
 if [ $? -ne 0 ]; then
@@ -44,10 +45,16 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-CPP_TEST_FILE="${1:-test_data/cpp_location_tests.csv}"
+CPP_TEST_FILE="${1}"
 CPP_INPUT_FILE="logs/cpp_locations_from_db.csv"
 CPP_WORK_FILE="logs/cpp_locations_working_${TIMESTAMP}.csv"
 CPP_REPORT_FILE="logs/cpp_location_test_report_${TIMESTAMP}.txt"
+
+if [ -z "$CPP_TEST_FILE" ]; then
+    echo "[ERROR] No C++ test CSV provided."
+    echo "Run from master_menu.sh or pass a CSV file manually."
+    exit 1
+fi
 
 if [ ! -f "$CPP_TEST_FILE" ]; then
     echo "[ERROR] C++ test file not found: $CPP_TEST_FILE"
@@ -55,7 +62,13 @@ if [ ! -f "$CPP_TEST_FILE" ]; then
 fi
 
 if [ ! -f "$CPP_INPUT_FILE" ]; then
-    echo "[ERROR] C++ location input file not found: $CPP_INPUT_FILE"
+    echo "[ERROR] Expected export file was not created: $CPP_INPUT_FILE"
+    echo "[ERROR] Check export_locations_for_cpp.sql execution."
+    exit 1
+fi
+
+if [ ! -s "$CPP_INPUT_FILE" ]; then
+    echo "[ERROR] Export file is missing or empty: $CPP_INPUT_FILE"
     exit 1
 fi
 
@@ -111,14 +124,16 @@ do
     echo "[INFO] Running test $test_id..."
 
     BEFORE_RECEIPT_ID=$(echo "SET HEADING OFF FEEDBACK OFF VERIFY OFF;
-SELECT NVL(MAX(receipt_id), 0) FROM receipts;
-EXIT;" | $SQLPLUS_CMD | tr -d '[:space:]')
+    SELECT NVL(MAX(receipt_id), 0) FROM receipts;
+    EXIT;" | $SQLPLUS_CMD | tr -d '[:space:]')
 
     BEFORE_EVENT_ID=$(echo "SET HEADING OFF FEEDBACK OFF VERIFY OFF;
-SELECT NVL(MAX(event_id), 0) FROM event_log;
-EXIT;" | $SQLPLUS_CMD | tr -d '[:space:]')
+    SELECT NVL(MAX(event_id), 0) FROM event_log;
+    EXIT;" | $SQLPLUS_CMD | tr -d '[:space:]')
 
     cp "$CPP_WORK_FILE" "${CPP_WORK_FILE}.bak"
+
+    # Validate that the CSV refrigeration flag matches the product master data in Oracle before attempting allocation. If there's a mismatch, skip the test and log it for manual review.
     refrigeration_check=$($SQLPLUS_CMD @sql/check_product_refrigeration.sql \
     "$product_id" \
     "$requires_refrigeration" | tr -d '[:space:]')
@@ -160,6 +175,7 @@ EXIT;" | $SQLPLUS_CMD | tr -d '[:space:]')
             db_output="DB update skipped because C++ allocation/input was not successful."
         fi
 
+        # If C++ updated the working CSV but Oracle rejected the transaction, restore the previous CSV state so C++ and DB remain synchronized.
         if [ "$actual_cpp_exit" -eq 0 ] && [ "$actual_db_status" != "PROCESSED" ]; then
             echo "[INFO] Rolling back C++ working CSV state for $test_id because DB status is $actual_db_status."
             cp "${CPP_WORK_FILE}.bak" "$CPP_WORK_FILE"
