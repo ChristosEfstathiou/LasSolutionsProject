@@ -13,6 +13,37 @@ echo "========================================="
 
 source scripts/load_config.sh
 
+# ------------------------------------------------------------
+# Validate configuration values
+# ------------------------------------------------------------
+
+if [[ "$PREFER_SAME_PRODUCT_LOCATION" != "Y" && "$PREFER_SAME_PRODUCT_LOCATION" != "N" ]]; then
+    echo "[ERROR] Invalid PREFER_SAME_PRODUCT_LOCATION value: $PREFER_SAME_PRODUCT_LOCATION"
+    echo "[ERROR] Allowed values: Y or N"
+    echo "[ERROR] Please correct the value in config/receiving.conf and re-run."
+    exit 1
+fi
+
+if [[ "$ALLOW_SPLIT_STORAGE" != "Y" && "$ALLOW_SPLIT_STORAGE" != "N" ]]; then
+    echo "[ERROR] Invalid ALLOW_SPLIT_STORAGE value: $ALLOW_SPLIT_STORAGE"
+    echo "[ERROR] Allowed values: Y or N"
+    echo "[ERROR] Please correct the value in config/receiving.conf and re-run."
+    exit 1
+fi
+
+if [[ "$ENABLE_RECEIPT_LOGGING" != "Y" && "$ENABLE_RECEIPT_LOGGING" != "N" ]]; then
+    echo "[ERROR] Invalid ENABLE_RECEIPT_LOGGING value: $ENABLE_RECEIPT_LOGGING"
+    echo "[ERROR] Allowed values: Y or N"
+    echo "[ERROR] Please correct the value in config/receiving.conf and re-run."
+    exit 1
+fi
+
+if [[ "$DEFAULT_RECEIPT_STATUS" != "RECEIVED" ]]; then
+    echo "[ERROR] Invalid DEFAULT_RECEIPT_STATUS value: $DEFAULT_RECEIPT_STATUS"
+    echo "[ERROR] Current allowed value: RECEIVED"
+    exit 1
+fi
+
 SQLPLUS_CMD="sqlplus -s ${DB_USER}/${DB_PASS}@//${DB_HOST}:${DB_PORT}/${DB_SERVICE}"
 
 echo "[CONFIG] PREFER_SAME_PRODUCT_LOCATION=$PREFER_SAME_PRODUCT_LOCATION"
