@@ -21,6 +21,7 @@ warehouse-project/
 │   └── 06_plsql_function_and_tests.sql  — has_sufficient_stock + 8 test cases
 ├── scripts/
 │   ├── run_all.bat                 — full system run (Windows CMD)
+│   ├── run_everything.bat          — run everything in one command
 │   ├── run_orders.sh               — run a single order (Linux/WSL)
 │   ├── order_report.sh             — show orders and inventory report
 │   ├── validate_orders.sh          — validate environment before running
