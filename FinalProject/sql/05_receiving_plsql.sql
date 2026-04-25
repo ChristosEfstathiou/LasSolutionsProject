@@ -213,3 +213,5 @@ EXCEPTION
         COMMIT;
 END;
 /
+
+EXIT;
