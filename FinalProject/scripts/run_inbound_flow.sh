@@ -51,11 +51,19 @@ echo "[CONFIG] ALLOW_SPLIT_STORAGE=$ALLOW_SPLIT_STORAGE"
 echo "[CONFIG] ENABLE_RECEIPT_LOGGING=$ENABLE_RECEIPT_LOGGING"
 echo "[CONFIG] DEFAULT_RECEIPT_STATUS=$DEFAULT_RECEIPT_STATUS"
 
+echo ""
 echo "[STEP 1] Checking database connection..."
-echo "SELECT USER FROM dual;" | $SQLPLUS_CMD
+
+$SQLPLUS_CMD <<EOF
+WHENEVER SQLERROR EXIT SQL.SQLCODE
+SELECT USER FROM dual;
+EXIT;
+EOF
 
 if [ $? -ne 0 ]; then
     echo "[ERROR] Database connection failed."
+    echo "[ERROR] Please check that Docker Desktop is running and the Oracle container is started."
+    echo "[ERROR] You can start it with: docker start oracle-db"
     exit 1
 fi
 
