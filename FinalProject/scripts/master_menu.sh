@@ -7,16 +7,17 @@ while true; do
     echo "=========================================="
     echo ""
     echo "1) Full database rebuild"
-    echo "2) Run inbound receiving flow"
+    echo "2) Run inbound flow receiving each csv file is treated as a single receipt test and each line is a receipt line"
     echo "3) Export validation report"
     echo "4) Cleanup environment"
     echo "5) View latest log/report"
     echo "6) Check database connection"
     echo "7) Run CSV tests"
     echo "8) Update master data"
-    echo "9) Exit"
+    echo "9) Run inbound receiving each csv line is treated as a different receipt test, legacy"
+    echo "10) Exit"
     echo ""
-    read -p "Select option [1-9]: " choice
+    read -p "Select option [1-10]: " choice
 
     case $choice in
         1)
@@ -24,22 +25,19 @@ while true; do
             ./scripts/full_rebuild.sh
             read -p "Press Enter to continue..."
             ;;
-        2)
-            echo ""
-            echo "Available C++ test files:"
-            ls test_data/cpp*.csv 2>/dev/null
+        2)              echo ""
+            ls test_data/cpp_multiple*.csv 2>/dev/null
             echo ""
 
-            read -p "Enter C++ test CSV [default: test_data/cpp_complex_full_outcome_coverage.csv]: " cpp_test_file
+            read -p "Enter C++ test CSV [default: test_data/cpp_multiple_product_full_outcome_coverage.csv]: " cpp_test_file
 
             if [ -z "$cpp_test_file" ]; then
-                cpp_test_file="test_data/cpp_complex_full_outcome_coverage.csv"
+                cpp_test_file="test_data/cpp_multiple_product_full_outcome_coverage.csv"
             fi
 
-            ./scripts/run_inbound_flow.sh "$cpp_test_file"
-
+            ./scripts/run_inbound_flow_multiple_products.sh "$cpp_test_file"
             read -p "Press Enter to continue..."
-            ;;
+            ;;           
         3)
             echo ""
             ./scripts/export_reports.sh
@@ -88,7 +86,7 @@ while true; do
                 csv_file="test_data/receiving_tests_extended.csv"
             fi
 
-            ./scripts/run_csv_tests.sh "$csv_file"
+            ./scripts/legacy/run_csv_tests.sh "$csv_file"
 
             read -p "Press Enter to continue..."
             ;;
@@ -98,6 +96,22 @@ while true; do
             read -p "Press Enter to continue..."
             ;;
         9)
+            echo ""
+            echo "Available C++ test files:"
+            ls test_data/cpp_single*.csv 2>/dev/null
+            echo ""
+
+            read -p "Enter C++ test CSV [default: test_data/cpp_single_complex_full_outcome_coverage.csv]: " cpp_test_file
+
+            if [ -z "$cpp_test_file" ]; then
+                cpp_test_file="test_data/cpp_single_complex_full_outcome_coverage.csv"
+            fi
+
+            ./scripts/legacy/run_inbound_flow.sh "$cpp_test_file"
+
+            read -p "Press Enter to continue..."
+            ;;
+        10)
             echo "Exiting FlowCore Control Panel."
             exit 0
             ;;

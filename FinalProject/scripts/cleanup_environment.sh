@@ -85,6 +85,7 @@ echo "[STEP 3] Removing log files..."
 
 rm -f logs/*.txt
 rm -f logs/*.csv
+rm -f logs/*.bak
 rm -f logs/deltas/*.txt
 rm -f logs/cpp_deltas/*.txt
 rm -r logs/deltas

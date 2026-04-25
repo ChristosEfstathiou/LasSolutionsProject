@@ -1,2 +1,0 @@
-test_id,product_id,requires_refrigeration,quantity,expected_cpp_exit,expected_db_status,description
-S05,4,N,120,0,PROCESSED,Rice exactly fits smallest dry location

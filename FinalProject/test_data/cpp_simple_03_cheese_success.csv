@@ -1,2 +1,0 @@
-test_id,product_id,requires_refrigeration,quantity,expected_cpp_exit,expected_db_status,description
-S03,3,Y,80,0,PROCESSED,Cheese exactly fits smallest refrigerated location

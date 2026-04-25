@@ -1,27 +1,58 @@
 SET PAGESIZE 100
-SET LINESIZE 220
+SET LINESIZE 280
 SET FEEDBACK OFF
 SET VERIFY OFF
 SET HEADING ON
 SET UNDERLINE =
 SET TRIMSPOOL ON
+SET WRAP OFF
+SET TAB OFF
+
+COLUMN location_code    FORMAT A15
+COLUMN zone             FORMAT A18
+COLUMN capacity         FORMAT 999999
+COLUMN used_capacity    FORMAT 999999
+COLUMN free_capacity    FORMAT 999999
+COLUMN product_ids      FORMAT A20
+
+COLUMN receipt_id       FORMAT 999999
+COLUMN supplier_name    FORMAT A25
+COLUMN receipt_date     FORMAT A19
+COLUMN status           FORMAT A12
+
+COLUMN receipt_line_id  FORMAT 999999
+COLUMN product_name     FORMAT A20
+COLUMN quantity         FORMAT 999999
+
+COLUMN event_id         FORMAT 999999
+COLUMN event_type       FORMAT A24
+COLUMN reference_type   FORMAT A15
+COLUMN reference_id     FORMAT 999999
+COLUMN message          FORMAT A100
+
+COLUMN storage_type     FORMAT A15
 
 DEFINE before_receipt_id = '&1'
 DEFINE before_event_id = '&2'
 
-PROMPT
 PROMPT ============================================================
 PROMPT CURRENT LOCATION CAPACITY AFTER THIS TEST
 PROMPT ============================================================
 
 SELECT
-    location_code,
-    zone,
-    capacity,
-    used_capacity,
-    capacity - used_capacity AS free_capacity
-FROM locations
-ORDER BY location_id;
+    l.location_code,
+    l.zone,
+    l.capacity,
+    l.used_capacity,
+    (l.capacity - l.used_capacity) AS free_capacity,
+    NVL((
+        SELECT LISTAGG(i.product_id, '|')
+        WITHIN GROUP (ORDER BY i.product_id)
+        FROM inventory i
+        WHERE i.location_id = l.location_id
+    ), 'NONE') AS product_ids
+FROM locations l
+ORDER BY l.location_id;
 
 PROMPT ============================================================
 PROMPT NEW RECEIPTS CREATED BY THIS TEST

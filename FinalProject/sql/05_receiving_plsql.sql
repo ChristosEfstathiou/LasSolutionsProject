@@ -118,6 +118,7 @@ BEGIN
         FROM receipt_lines rl
         JOIN products p ON p.product_id = rl.product_id
         WHERE rl.receipt_id = p_receipt_id
+        ORDER BY rl.receipt_line_id
     )
     LOOP
         v_location_id := find_putaway_location(

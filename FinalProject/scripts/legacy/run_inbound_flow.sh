@@ -200,7 +200,7 @@ do
         if [ "$actual_cpp_exit" -eq 0 ]; then
             echo "[INFO] Updating Oracle DB for $test_id..."
 
-            db_output=$($SQLPLUS_CMD @sql/process_receipt_from_cli.sql \
+            db_output=$($SQLPLUS_CMD @sql/legacy/process_receipt_from_cli.sql \
                 "$product_id" \
                 "$quantity" \
                 "$DEFAULT_RECEIPT_STATUS" \

@@ -1,7 +1,0 @@
-test_id,product_id,requires_refrigeration,quantity,expected_cpp_exit,expected_db_status,description
-S07_1,1,Y,0,1,SKIPPED,Zero quantity is rejected by C++
-S07_2,2,Y,0,1,SKIPPED,Zero quantity is rejected by C++
-S07_3,3,Y,0,1,SKIPPED,Zero quantity is rejected by C++
-S07_4,4,Y,0,1,SKIPPED,Zero quantity is rejected by C++
-S07_5,5,Y,0,1,SKIPPED,Zero quantity is rejected by C++
-S07_6,6,Y,0,1,SKIPPED,Zero quantity is rejected by C++

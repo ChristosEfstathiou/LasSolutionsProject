@@ -1,5 +1,6 @@
 #!/bin/bash
-
+# Legacy wrapper script kept for reference.
+# Replaced by master_menu.sh and dedicated inbound flow scripts.
 echo "======================================"
 echo " FlowCore Receiving / Putaway Runner"
 echo "======================================"

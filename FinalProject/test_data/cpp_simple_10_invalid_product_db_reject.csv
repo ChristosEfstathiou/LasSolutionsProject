@@ -1,2 +1,0 @@
-test_id,product_id,requires_refrigeration,quantity,expected_cpp_exit,expected_db_status,description
-S10,999,Y,10,0,REJECTED,Invalid product id passes C++ allocation but is rejected by DB foreign key

@@ -273,7 +273,7 @@ If C++ succeeds but Oracle rejects the transaction, the CSV state is rolled back
 
 # 8. Automation Scripts
 
-## run_inbound_flow.sh
+## run_inbound_flow_multiple_products.sh
 
 Main end-to-end simulation.
 
@@ -290,7 +290,7 @@ Main end-to-end simulation.
 
 ## run_csv_tests.sh
 
-Runs SQL/PLSQL receipt tests using CSV input files.
+Runs SQL/PLSQL receipt tests using CSV input files, legacy.
 
 ## full_rebuild.sh
 

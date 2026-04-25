@@ -8,7 +8,7 @@ CSV_FILE="${1:-data/receiving_tests_extended.csv}"
 
 if [ ! -f "$CSV_FILE" ]; then
     echo "[ERROR] CSV file not found: $CSV_FILE"
-    echo "Usage: ./scripts/run_csv_tests.sh [csv_file]"
+    echo "Usage: ./scripts/legacy/run_csv_tests.sh [csv_file]"
     exit 1
 fi
 

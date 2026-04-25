@@ -1,4 +1,0 @@
-test_id,product_id,requires_refrigeration,quantity,expected_cpp_exit,expected_db_status,description
-S13_01,1,Y,10,0,PROCESSED,Milk is stored in the location with smallest available capacity
-S13_02,2,Y,90,0,PROCESSED,Yogurt is stored in the location with smallest available capacity
-S13_03,1,Y,7,0,PROCESSED,Milk is stored in the location with smallest available capacity if prefers_same_product_location is N else it goes in the same capacity as milk

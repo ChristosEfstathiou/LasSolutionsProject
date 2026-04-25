@@ -1,3 +1,0 @@
-test_id,product_id,requires_refrigeration,quantity,expected_cpp_exit,expected_db_status,description
-S12_01,1,N,10,1,SKIPPED,Milk requires refrigeration in master data but CSV marks it as dry
-S12_02,5,Y,10,1,SKIPPED,Pasta is dry in master data but CSV marks it as refrigerated

@@ -1,2 +1,0 @@
-test_id,product_id,requires_refrigeration,quantity,expected_cpp_exit,expected_db_status,description
-S01,1,Y,25,0,PROCESSED,Milk is stored successfully in refrigerated location

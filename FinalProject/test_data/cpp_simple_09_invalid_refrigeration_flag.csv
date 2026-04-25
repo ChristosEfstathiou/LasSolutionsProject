@@ -1,2 +1,0 @@
-test_id,product_id,requires_refrigeration,quantity,expected_cpp_exit,expected_db_status,description
-S09,1,X,10,1,SKIPPED,Invalid refrigeration flag is rejected by C++

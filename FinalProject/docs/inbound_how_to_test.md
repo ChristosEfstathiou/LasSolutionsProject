@@ -127,7 +127,7 @@ loading the base locations master data
 
 Use this when you want a completely clean environment.
 
-2. Choose Option 2 – Run Inbound Flow
+2. Choose Option 2 – Run inbound flow receiving each csv file is treated as a single receipt test and each line is a receipt line
 
 This runs:
 
@@ -142,7 +142,7 @@ or press Enter to run the default file
 
 Default file:
 
-test_data/cpp_complex_full_outcome_coverage.csv
+test_data/cpp_multiple_product_after_master_update.csv
 
 The inbound flow performs:
 
@@ -193,7 +193,7 @@ Run inbound flow again using Option 2.
 
 This time select:
 
-test_data/cpp_after_master_update.csv
+test_data/cpp_multiple_product_after_master_update.csv
 
 This demonstrates that the system correctly uses:
 
@@ -238,14 +238,14 @@ Recommended Full Demo Sequence
 1 → Full Rebuild
 2 → Run Inbound Flow (default CSV)
 8 → Update Master Data
-2 → Run Inbound Flow (cpp_after_master_update.csv)
+2 → Run Inbound Flow (cpp_multiple_product_after_master_update.csv)
 3 → Export Reports
 needs full rebuild to rerun a test. 
 
 Or 
 
 1 → Full Rebuild
-2 → Run Inbound Flow (any CSV except for cpp_after_master_update.csv)
+2 → Run Inbound Flow (any CSV except for cpp_multiple_product_after_master_update.csv)
 3 → Export Reports
 4 → Cleanup Environment
 repeat
