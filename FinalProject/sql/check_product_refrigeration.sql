@@ -1,5 +1,8 @@
+-- Remove column headers
 SET HEADING OFF
+-- Remove "rows selected" messages
 SET FEEDBACK OFF
+-- Disable variable substitution verification
 SET VERIFY OFF
 
 DEFINE product_id = '&1'
