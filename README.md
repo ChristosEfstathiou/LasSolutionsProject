@@ -99,3 +99,16 @@ g++ -o stock_allocation stock_allocation.cpp
 
 Bardi Alnto — Outbound Operations  
 Junior Software Commissioning Engineer Bootcamp — April 2026
+
+## Run Everything at Once
+
+To run the complete demo in one command (CMD, WSL and C++ together):
+
+```cmd
+set ORA_USER=HR
+set ORA_PASS=hr
+set ORA_CONN=localhost/XEPDB1
+run_everything.bat
+```
+
+This runs the full pipeline, WSL validation and reports, and the C++ stock allocator automatically.
