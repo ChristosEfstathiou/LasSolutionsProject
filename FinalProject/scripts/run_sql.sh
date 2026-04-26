@@ -1,4 +1,5 @@
 #!/bin/bash
+#Helper script for direct SQL execution, but the flow is fully menu-driven now.
 
 source scripts/load_config.sh
 
