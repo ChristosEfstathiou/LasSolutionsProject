@@ -1,0 +1,19 @@
+test_id,supplier_name,product_id,requires_refrigeration,quantity,expected_cpp_exit,expected_db_status,description
+CAP01,Capacity Mistake Supplier,1,Y,30,0,PROCESSED,Milk starts filling refrigerated capacity
+CAP02,Capacity Mistake Supplier,2,Y,25,0,PROCESSED,Yogurt uses more refrigerated capacity
+CAP03,Capacity Mistake Supplier,3,Y,25,0,PROCESSED,Cheese completes an 80-capacity cold location gradually
+CAP04,Capacity Mistake Supplier,1,Y,40,0,PROCESSED,Milk continues filling remaining cold capacity
+CAP05,Capacity Mistake Supplier,2,Y,35,0,PROCESSED,Yogurt uses another cold location
+CAP06,Capacity Mistake Supplier,3,Y,25,0,PROCESSED,Cheese completes another 100-capacity cold location gradually
+CAP07,Capacity Mistake Supplier,1,Y,80,0,PROCESSED,Milk fills final cold location in one line
+CAP08,Capacity Mistake Supplier,2,Y,30,0,PROCESSED,Intentional mistake: expected Yogurt to fit but all cold capacity is full
+CAP09,Capacity Mistake Supplier,5,N,50,0,PROCESSED,Pasta starts filling dry capacity
+CAP10,Capacity Mistake Supplier,4,N,40,0,PROCESSED,Rice uses more dry capacity
+CAP11,Capacity Mistake Supplier,6,N,30,0,PROCESSED,Cereal completes 120-capacity dry location gradually
+CAP12,Capacity Mistake Supplier,5,N,60,0,PROCESSED,Pasta continues filling dry capacity
+CAP13,Capacity Mistake Supplier,4,N,50,0,PROCESSED,Rice uses another dry location
+CAP14,Capacity Mistake Supplier,6,N,40,0,PROCESSED,Cereal continues dry capacity usage
+CAP15,Capacity Mistake Supplier,5,N,120,0,PROCESSED,Pasta fills final dry location in one line
+CAP16,Capacity Mistake Supplier,4,N,40,0,PROCESSED,Intentional mistake: expected Rice to fit but all dry capacity is full
+CAP17,Capacity Mistake Supplier,4,N,1,2,SKIPPED,Intentional mistake: expected Rice to fail but there is still enough capacity
+CAP18,Capacity Mistake Supplier,2,Y,1,2,SKIPPED,Intentional mistake: expected Yogurt to fail but there is still enough capacity

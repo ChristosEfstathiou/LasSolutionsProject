@@ -1,0 +1,9 @@
+test_id,supplier_name,product_id,requires_refrigeration,quantity,expected_cpp_exit,expected_db_status,description
+FAIL01,Intentional Failure Supplier,1,Y,10,2,SKIPPED,Intentional fail: expected no capacity but Milk should actually fit
+FAIL02,Intentional Failure Supplier,2,Y,0,0,PROCESSED,Intentional fail: zero quantity should be rejected by C++
+FAIL03,Intentional Failure Supplier,5,N,-5,0,PROCESSED,Intentional fail: negative quantity should be rejected by C++
+FAIL04,Intentional Failure Supplier,999,Y,10,0,PROCESSED,Intentional fail: invalid product should be skipped before allocation
+FAIL05,Intentional Failure Supplier,1,N,10,0,PROCESSED,Intentional fail: Milk refrigeration mismatch should be skipped
+FAIL06,Intentional Failure Supplier,6,N,999,0,PROCESSED,Intentional fail: huge dry quantity should not fit
+FAIL07,Intentional Failure Supplier,3,Y,20,2,SKIPPED,Intentional fail: Cheese should fit but expected failure
+FAIL08,Intentional Failure Supplier,4,N,30,2,SKIPPED,Intentional fail: Rice should fit but expected failure
