@@ -12,12 +12,10 @@ while true; do
     echo "4) Cleanup environment"
     echo "5) View latest log/report"
     echo "6) Check database connection"
-    echo "7) Run CSV tests"
-    echo "8) Update master data"
-    echo "9) Run inbound receiving each csv line is treated as a different receipt test, legacy"
-    echo "10) Exit"
+    echo "7) Update master data"
+    echo "8) Exit"
     echo ""
-    read -p "Select option [1-10]: " choice
+    read -p "Select option [1-8]: " choice
 
     case $choice in
         1)
@@ -76,45 +74,14 @@ while true; do
             ;;
         7)
             echo ""
-             echo "Available CSV test files:"
-             ls test_data/receiving_tests_*.csv 2>/dev/null
-            echo ""
-
-            read -p "Enter CSV file path [default: test_data/receiving_tests_extended.csv]: " csv_file
-
-            if [ -z "$csv_file" ]; then
-                csv_file="test_data/receiving_tests_extended.csv"
-            fi
-
-            ./scripts/legacy/run_csv_tests.sh "$csv_file"
-
-            read -p "Press Enter to continue..."
-            ;;
-        8)
-            echo ""
             ./scripts/update_master_data.sh
             read -p "Press Enter to continue..."
             ;;
-        9)
-            echo ""
-            echo "Available C++ test files:"
-            ls test_data/cpp_single*.csv 2>/dev/null
-            echo ""
-
-            read -p "Enter C++ test CSV [default: test_data/cpp_single_complex_full_outcome_coverage.csv]: " cpp_test_file
-
-            if [ -z "$cpp_test_file" ]; then
-                cpp_test_file="test_data/cpp_single_complex_full_outcome_coverage.csv"
-            fi
-
-            ./scripts/legacy/run_inbound_flow.sh "$cpp_test_file"
-
-            read -p "Press Enter to continue..."
-            ;;
-        10)
-            echo "Exiting FlowCore Control Panel."
+        8)
+             echo "Exiting FlowCore Control Panel."
             exit 0
             ;;
+           
         *)
             echo "Invalid option."
             read -p "Press Enter to continue..."
