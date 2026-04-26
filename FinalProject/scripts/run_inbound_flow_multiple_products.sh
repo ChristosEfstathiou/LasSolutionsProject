@@ -529,8 +529,12 @@ if [ $? -ne 0 ]; then
 fi
 
 echo ""
+echo "[STEP 10] Cleaning temporary allocator files..."
+rm -f "$CPP_INPUT_FILE"
+rm -f "$CPP_WORK_FILE"
+
+echo ""
 echo "[DONE] Multi-product inbound flow completed successfully."
 echo "Finished: $(date)"
 echo "Main log saved to: $LOG_FILE"
 echo "Report saved to: $REPORT_FILE"
-echo "Working C++ state saved to: $CPP_WORK_FILE"

@@ -11,11 +11,12 @@ while true; do
     echo "3) Export validation report"
     echo "4) Cleanup environment"
     echo "5) View latest log/report"
-    echo "6) Check database connection"
-    echo "7) Update master data"
-    echo "8) Exit"
+    echo "6) View/export current FlowCore status snapshot"
+    echo "7) Check database connection"
+    echo "8) Update master data"
+    echo "9) Exit"
     echo ""
-    read -p "Select option [1-8]: " choice
+    read -p "Select option [1-9]: " choice
 
     case $choice in
         1)
@@ -50,7 +51,7 @@ while true; do
         5)
             echo ""
             echo "Latest log/report:"
-            latest_file=$(ls -t logs/*.txt 2>/dev/null | head -n 1)
+            latest_file=$(ls -t logs/inbound_validation_report_*.txt 2>/dev/null | head -n 1)
 
             if [ -z "$latest_file" ]; then
                 echo "[INFO] No log files found."
@@ -64,6 +65,11 @@ while true; do
             ;;
         6)
             echo ""
+            ./scripts/export_current_status.sh
+            read -p "Press Enter to continue..."
+            ;; 
+        7)
+            echo ""
             source scripts/load_config.sh
 
             SQLPLUS_CMD="sqlplus -s ${DB_USER}/${DB_PASS}@//${DB_HOST}:${DB_PORT}/${DB_SERVICE}"
@@ -73,12 +79,12 @@ while true; do
 
             read -p "Press Enter to continue..."
             ;;
-        7)
+        8)
             echo ""
             ./scripts/update_master_data.sh
             read -p "Press Enter to continue..."
             ;;
-        8)
+        9)
             echo "Exiting FlowCore Control Panel."
             exit 0
             ;;
