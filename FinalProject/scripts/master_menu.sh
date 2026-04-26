@@ -7,7 +7,7 @@ while true; do
     echo "=========================================="
     echo ""
     echo "1) Full database rebuild"
-    echo "2) Run inbound flow receiving each csv file is treated as a single receipt test and each line is a receipt line"
+    echo "2) Run inbound flow"
     echo "3) Export validation report"
     echo "4) Cleanup environment"
     echo "5) View latest log/report"
@@ -23,7 +23,8 @@ while true; do
             ./scripts/full_rebuild.sh
             read -p "Press Enter to continue..."
             ;;
-        2)              echo ""
+        2)  
+            echo ""
             ls test_data/cpp_multiple*.csv 2>/dev/null
             echo ""
 
@@ -78,7 +79,7 @@ while true; do
             read -p "Press Enter to continue..."
             ;;
         8)
-             echo "Exiting FlowCore Control Panel."
+            echo "Exiting FlowCore Control Panel."
             exit 0
             ;;
            

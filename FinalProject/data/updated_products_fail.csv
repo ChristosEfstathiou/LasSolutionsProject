@@ -1,0 +1,4 @@
+product_id,product_name,requires_refrigeration,unit_of_measure
+1,Milk Updated Name,Y,PCS
+2,Yogurt,N,PCS
+5,Pasta,Y,PCS

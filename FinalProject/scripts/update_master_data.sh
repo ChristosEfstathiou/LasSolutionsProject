@@ -183,4 +183,75 @@ EOF
 
 done < "$LOCATION_FILE"
 
+echo ""
+echo "[STEP 3] Current locations after update..."
+echo ""
+
+$SQLPLUS_CMD <<EOF
+SET PAGESIZE 100
+SET LINESIZE 180
+SET FEEDBACK OFF
+SET VERIFY OFF
+SET HEADING ON
+SET UNDERLINE =
+SET TRIMSPOOL ON
+
+COLUMN location_id FORMAT 999
+COLUMN location_code FORMAT A12
+COLUMN zone FORMAT A18
+COLUMN type FORMAT A15
+COLUMN capacity FORMAT 9999
+COLUMN used_capacity FORMAT 9999
+COLUMN free_capacity FORMAT 9999
+
+SELECT
+    location_id,
+    location_code,
+    zone,
+    CASE
+        WHEN is_refrigerated = 'Y' THEN 'REFRIGERATED'
+        ELSE 'DRY'
+    END AS type,
+    capacity,
+    used_capacity,
+    capacity - used_capacity AS free_capacity
+FROM locations
+ORDER BY location_id;
+
+EXIT;
+EOF
+
+echo ""
+echo "[STEP 4] Current products after update..."
+echo ""
+
+$SQLPLUS_CMD <<EOF
+SET PAGESIZE 100
+SET LINESIZE 180
+SET FEEDBACK OFF
+SET VERIFY OFF
+SET HEADING ON
+SET UNDERLINE =
+SET TRIMSPOOL ON
+
+COLUMN product_id FORMAT 999
+COLUMN product_name FORMAT A25
+COLUMN storage_type FORMAT A15
+COLUMN unit_of_measure FORMAT A12
+
+SELECT
+    product_id,
+    product_name,
+    CASE
+        WHEN requires_refrigeration = 'Y' THEN 'REFRIGERATED'
+        ELSE 'DRY'
+    END AS storage_type,
+    unit_of_measure
+FROM products
+ORDER BY product_id;
+
+EXIT;
+EOF
+
+echo ""
 echo "[DONE] Master data update completed."
