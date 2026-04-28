@@ -1,0 +1,18 @@
+============================== 
+WAREHOUSE RUN - Tue 04/28/2026 15:43:30.11 
+============================== 
+[SCHEMA] 
+
+SQL*Plus: Release 21.0.0.0.0 - Production on Tue Apr 28 15:43:33 2026
+Version 21.3.0.0.0
+
+Copyright (c) 1982, 2021, Oracle.  All rights reserved.
+
+Last Successful login time: Mon Apr 27 2026 23:53:25 +03:00
+
+Connected to:
+Oracle Database 21c Express Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+SP2-0310: unable to open file "D:\warehouse_project\sql\01_create_schema.sql"
+SQL> SQL> SQL> 

@@ -16,8 +16,8 @@ if "%ORA_PASS%"=="" (
 )
 if "%ORA_CONN%"=="" set ORA_CONN=localhost/XEPDB1
 
-set BASE_DIR=D:\warehouse_project\sql
-set LOGS_DIR=D:\warehouse_project\logs
+set BASE_DIR=D:\warehouse_project\Outbound\sql
+set LOGS_DIR=D:\warehouse_project\Outbound\logs
 
 if not exist "%LOGS_DIR%" mkdir "%LOGS_DIR%"
 
