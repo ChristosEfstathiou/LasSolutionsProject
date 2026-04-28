@@ -1,0 +1,5 @@
+test_id,supplier_name,product_id,requires_refrigeration,quantity,expected_cpp_exit,expected_db_status,description
+C01,Continuation Supplier,1,Y,1,2,SKIPPED,No refrigerated capacity left
+C02,Continuation Supplier,2,Y,1,2,SKIPPED,No refrigerated capacity left
+C03,Continuation Supplier,4,N,1,2,SKIPPED,No dry capacity left
+C04,Continuation Supplier,6,N,1,2,SKIPPED,No dry capacity left

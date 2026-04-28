@@ -1,0 +1,26 @@
+test_id,supplier_name,product_id,requires_refrigeration,quantity,expected_cpp_exit,expected_db_status,description
+MP01,FreshFoods Supplier,999,Y,10,1,SKIPPED,Invalid product id is rejected before allocation
+MP02,FreshFoods Supplier,1,Y,10,0,PROCESSED,Milk refrigerated line succeeds
+MP03,FreshFoods Supplier,2,Y,15,0,PROCESSED,Yogurt refrigerated line succeeds
+MP04,FreshFoods Supplier,3,Y,20,0,PROCESSED,Cheese refrigerated line succeeds
+MP05,FreshFoods Supplier,5,N,25,0,PROCESSED,Pasta dry line succeeds
+MP06,FreshFoods Supplier,4,N,30,0,PROCESSED,Rice dry line succeeds
+MP07,FreshFoods Supplier,6,N,20,0,PROCESSED,Cereal dry line succeeds
+MP08,FreshFoods Supplier,1,Y,0,1,SKIPPED,Zero quantity is rejected by C++
+MP09,FreshFoods Supplier,1,Y,-5,1,SKIPPED,Negative refrigerated quantity is rejected by C++
+MP10,FreshFoods Supplier,5,N,-10,1,SKIPPED,Negative dry quantity is rejected by C++
+MP11,FreshFoods Supplier,1,X,10,1,SKIPPED,Invalid refrigeration flag is rejected by C++
+MP12,FreshFoods Supplier,1,N,10,1,SKIPPED,Milk requires refrigeration but CSV marks it as dry
+MP13,FreshFoods Supplier,5,Y,10,1,SKIPPED,Pasta is dry but CSV marks it as refrigerated
+MP14,FreshFoods Supplier,2,Y,999,2,SKIPPED,Huge refrigerated quantity fails because no single cold location can fit it
+MP15,FreshFoods Supplier,6,N,999,2,SKIPPED,Huge dry quantity fails because no single dry location can fit it
+MP16,FreshFoods Supplier,3,Y,80,0,PROCESSED,Cheese uses available refrigerated capacity
+MP17,FreshFoods Supplier,1,Y,100,0,PROCESSED,Milk uses remaining large refrigerated capacity
+MP18,FreshFoods Supplier,2,Y,35,0,PROCESSED,Yogurt still fits in same-product refrigerated location
+MP19,FreshFoods Supplier,1,Y,20,0,PROCESSED,Milk refrigerated line succeeds
+MP20,FreshFoods Supplier,2,Y,1,2,SKIPPED,Yogurt fails after refrigerated capacity is exhausted
+MP21,FreshFoods Supplier,4,N,100,0,PROCESSED,Rice uses remaining dry capacity
+MP22,FreshFoods Supplier,5,N,150,0,PROCESSED,Pasta uses final large dry capacity
+MP23,FreshFoods Supplier,6,N,45,0,PROCESSED,Cereal still fits in same-product dry location
+MP24,FreshFoods Supplier,6,N,50,0,PROCESSED,Cereal still fits in same-product dry location
+MP25,FreshFoods Supplier,6,N,1,2,SKIPPED,Cereal fails after dry capacity is exhausted

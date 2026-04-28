@@ -1,0 +1,8 @@
+CREATE TABLE receipts (
+    receipt_id NUMBER PRIMARY KEY,
+    supplier_name VARCHAR2(100) NOT NULL,
+    receipt_date DATE DEFAULT SYSDATE NOT NULL,
+    status VARCHAR2(20) DEFAULT 'RECEIVED' NOT NULL,
+    CONSTRAINT chk_receipts_status
+        CHECK (status IN ('RECEIVED', 'PROCESSED', 'FAILED'))
+);

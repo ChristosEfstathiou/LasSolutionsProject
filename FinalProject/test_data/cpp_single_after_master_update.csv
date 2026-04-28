@@ -1,0 +1,19 @@
+test_id,product_id,requires_refrigeration,quantity,expected_cpp_exit,expected_db_status,description
+UP01,1,Y,30,0,PROCESSED,Milk uses extra capacity added to FR-A1 after capacity update
+UP02,1,Y,10,0,PROCESSED,Milk uses new refrigerated location because original Milk location cannot fit quantity
+UP03,7,Y,90,0,PROCESSED,New product Butter is stored in new refrigerated location
+UP04,9,Y,40,0,PROCESSED,New product Ice Cream is stored in new refrigerated location
+UP05,11,Y,80,0,PROCESSED,New product Juice is stored in new refrigerated location
+UP06,11,Y,1,2,SKIPPED,Juice fails because cold capacity is full after update tests
+UP07,4,N,25,0,PROCESSED,Rice uses extra capacity added to DR-A1 after capacity update
+UP08,4,N,10,0,PROCESSED,Rice uses new dry location because original Rice location cannot fit quantity
+UP09,8,N,205,0,PROCESSED,New product Flour is stored in new dry location
+UP10,10,N,150,0,PROCESSED,New product Beans is stored in location with other products that fits
+UP11,10,N,5,0,PROCESSED,New product Beans is stored in location with other products that fits
+UP12,12,N,1,2,SKIPPED,Sugar fails because dry capacity is full after update tests
+UP13,999,Y,10,2,SKIPPED,Invalid product id is not reached because cold storage is full
+UP14,999,N,10,2,SKIPPED,Invalid product id is not reached because dry storage is full
+UP15,7,N,10,1,SKIPPED,Butter requires refrigeration but CSV marks it as dry
+UP16,8,Y,10,1,SKIPPED,Flour is dry but CSV marks it as refrigerated
+UP17,7,Y,0,1,SKIPPED,Zero quantity for new refrigerated product is rejected by C++
+UP18,8,N,-5,1,SKIPPED,Negative quantity for new dry product is rejected by C++

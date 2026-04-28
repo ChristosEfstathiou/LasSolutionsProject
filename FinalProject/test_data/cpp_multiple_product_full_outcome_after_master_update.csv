@@ -1,0 +1,18 @@
+test_id,supplier_name,product_id,requires_refrigeration,quantity,expected_cpp_exit,expected_db_status,description
+UP01,PostUpdate Supplier,7,Y,90,0,PROCESSED,New refrigerated product Butter exactly fits new FR-C1 location
+UP02,PostUpdate Supplier,9,Y,110,0,PROCESSED,New refrigerated product Ice Cream exactly fits new FR-C2 location
+UP03,PostUpdate Supplier,11,Y,30,0,PROCESSED,New refrigerated product Juice uses increased capacity in FR-A1
+UP04,PostUpdate Supplier,1,Y,20,0,PROCESSED,Existing Milk uses remaining increased refrigerated capacity
+UP05,PostUpdate Supplier,2,Y,1,2,SKIPPED,Yogurt fails because refrigerated capacity is exhausted
+UP06,PostUpdate Supplier,8,N,200,0,PROCESSED,New dry product Flour exactly fits new DR-C1 location
+UP07,PostUpdate Supplier,10,N,160,0,PROCESSED,New dry product Beans exactly fits new DR-C2 location
+UP08,PostUpdate Supplier,12,N,30,0,PROCESSED,New dry product Sugar uses increased capacity in DR-A1
+UP09,PostUpdate Supplier,5,N,5,0,PROCESSED,Existing Pasta uses remaining dry capacity
+UP10,PostUpdate Supplier,4,N,1,2,SKIPPED,Rice fails because dry capacity is exhausted
+UP11,PostUpdate Supplier,999,Y,10,1,SKIPPED,Invalid product id is rejected before allocation
+UP12,PostUpdate Supplier,7,N,10,1,SKIPPED,Butter requires refrigeration but CSV marks it as dry
+UP13,PostUpdate Supplier,8,Y,10,1,SKIPPED,Flour is dry but CSV marks it as refrigerated
+UP14,PostUpdate Supplier,11,Y,0,1,SKIPPED,Zero quantity for new refrigerated product is rejected
+UP15,PostUpdate Supplier,12,N,-5,1,SKIPPED,Negative quantity for new dry product is rejected
+UP16,PostUpdate Supplier,9,Y,999,2,SKIPPED,Huge Ice Cream quantity fails due to insufficient single-location capacity
+UP17,PostUpdate Supplier,10,N,999,2,SKIPPED,Huge Beans quantity fails due to insufficient single-location capacity

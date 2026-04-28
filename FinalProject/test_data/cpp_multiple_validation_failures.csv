@@ -1,0 +1,8 @@
+test_id,supplier_name,product_id,requires_refrigeration,quantity,expected_cpp_exit,expected_db_status,description
+V01,Validation Supplier,999,Y,10,1,SKIPPED,Invalid product id
+V02,Validation Supplier,1,N,10,1,SKIPPED,Milk wrong refrigeration flag
+V03,Validation Supplier,5,Y,10,1,SKIPPED,Pasta wrong refrigeration flag
+V04,Validation Supplier,1,Y,0,1,SKIPPED,Zero quantity
+V05,Validation Supplier,4,N,-5,1,SKIPPED,Negative quantity
+V06,Validation Supplier,2,Y,999,2,SKIPPED,No refrigerated location can fit huge quantity
+V07,Validation Supplier,6,N,999,2,SKIPPED,No dry location can fit huge quantity

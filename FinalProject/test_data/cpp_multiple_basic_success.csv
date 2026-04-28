@@ -1,0 +1,7 @@
+test_id,supplier_name,product_id,requires_refrigeration,quantity,expected_cpp_exit,expected_db_status,description
+B01,Basic Supplier,1,Y,10,0,PROCESSED,Milk stored successfully
+B02,Basic Supplier,2,Y,15,0,PROCESSED,Yogurt stored successfully
+B03,Basic Supplier,3,Y,20,0,PROCESSED,Cheese stored successfully
+B04,Basic Supplier,4,N,25,0,PROCESSED,Rice stored successfully
+B05,Basic Supplier,5,N,30,0,PROCESSED,Pasta stored successfully
+B06,Basic Supplier,6,N,20,0,PROCESSED,Cereal stored successfully

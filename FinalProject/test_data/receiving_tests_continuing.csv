@@ -1,0 +1,19 @@
+test_id,product_id,quantity,expected_status,description
+CT01,1,10,PROCESSED,More Milk should prefer existing cold location with same product
+CT02,5,15,PROCESSED,More Pasta should prefer existing dry location with same product
+CT03,2,20,PROCESSED,More Yogurt should prefer existing cold location with same product
+CT04,6,25,PROCESSED,More Cereal should prefer existing dry location with same product
+CT05,3,5,PROCESSED,More Cheese should prefer existing cold location with same product
+CT06,4,10,PROCESSED,More Rice should prefer existing dry location with same product
+CT07,1,70,PROCESSED,Milk should move to another cold location if first location lacks capacity
+CT08,5,160,FAILED,Pasta fails because no single dry location has enough remaining capacity
+CT09,2,999,FAILED,Yogurt fails when remaining cold capacity is insufficient
+CT10,6,999,FAILED,Cereal fails when remaining dry capacity is insufficient
+CT11,999,10,REJECTED,Invalid product id is rejected in continuing mode
+CT12,1,0,REJECTED,Zero quantity is rejected in continuing mode
+CT13,1,-10,REJECTED,Negative quantity is rejected in continuing mode
+CT14,3,80,FAILED,Cheese fails because no single cold location has enough remaining capacity
+CT15,4,20,PROCESSED,Rice uses remaining compatible dry capacity
+CT16,1,33,FAILED,Milk fails because no single cold location has enough remaining capacity
+CT17,5,77,PROCESSED,Pasta is stored in remaining dry capacity
+CT18,6,43,PROCESSED,Cereal is stored in remaining dry capacity

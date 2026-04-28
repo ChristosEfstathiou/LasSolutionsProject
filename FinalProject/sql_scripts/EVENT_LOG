@@ -1,0 +1,8 @@
+CREATE TABLE event_log (
+    event_id NUMBER PRIMARY KEY,
+    event_time DATE DEFAULT SYSDATE NOT NULL,
+    event_type VARCHAR2(50) NOT NULL,
+    reference_type VARCHAR2(30),
+    reference_id NUMBER,
+    message VARCHAR2(400)
+);

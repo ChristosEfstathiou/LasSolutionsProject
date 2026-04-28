@@ -1,0 +1,12 @@
+CREATE TABLE receipt_lines (
+    receipt_line_id NUMBER PRIMARY KEY,
+    receipt_id NUMBER NOT NULL,
+    product_id NUMBER NOT NULL,
+    quantity NUMBER NOT NULL,
+    CONSTRAINT fk_receipt_lines_receipt
+        FOREIGN KEY (receipt_id) REFERENCES receipts(receipt_id),
+    CONSTRAINT fk_receipt_lines_product
+        FOREIGN KEY (product_id) REFERENCES products(product_id),
+    CONSTRAINT chk_receipt_lines_quantity
+        CHECK (quantity > 0)
+);

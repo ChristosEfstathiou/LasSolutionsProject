@@ -1,0 +1,7 @@
+location_id,location_code,zone,is_refrigerated,capacity,used_capacity
+1,FR-A1,COLD_ZONE_A,Y,130,0
+4,DR-A1,DRY_ZONE_A,N,180,0
+7,FR-C1,COLD_ZONE_C,Y,90,0
+8,FR-C2,COLD_ZONE_C,Y,130,0
+9,DR-C1,DRY_ZONE_C,N,205,0
+10,DR-C2,DRY_ZONE_C,N,160,0

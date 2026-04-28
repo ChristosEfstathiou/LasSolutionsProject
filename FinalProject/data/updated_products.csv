@@ -1,0 +1,8 @@
+product_id,product_name,requires_refrigeration,unit_of_measure
+1,Milk,Y,PCS
+7,Butter,Y,PCS
+8,Flour,N,PCS
+9,Ice Cream,Y,PCS
+10,Beans,N,PCS
+11,Juice,Y,PCS
+12,Sugar,N,PCS

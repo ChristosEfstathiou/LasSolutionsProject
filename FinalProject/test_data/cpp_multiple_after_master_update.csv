@@ -1,0 +1,10 @@
+test_id,supplier_name,product_id,requires_refrigeration,quantity,expected_cpp_exit,expected_db_status,description
+U01,Updated Supplier,7,Y,90,0,PROCESSED,Butter fits FR-C1
+U02,Updated Supplier,9,Y,110,0,PROCESSED,Ice Cream fits FR-C2
+U03,Updated Supplier,11,Y,30,0,PROCESSED,Juice uses expanded FR-A1
+U04,Updated Supplier,8,N,200,0,PROCESSED,Flour fits DR-C1
+U05,Updated Supplier,10,N,160,0,PROCESSED,Beans fits DR-C2
+U06,Updated Supplier,12,N,30,0,PROCESSED,Sugar uses expanded DR-A1
+U07,Updated Supplier,999,Y,10,1,SKIPPED,Invalid product after update
+U08,Updated Supplier,7,N,10,1,SKIPPED,Butter wrong refrigeration flag
+U09,Updated Supplier,8,Y,10,1,SKIPPED,Flour wrong refrigeration flag

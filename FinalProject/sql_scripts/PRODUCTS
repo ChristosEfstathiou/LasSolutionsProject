@@ -1,0 +1,8 @@
+CREATE TABLE products (
+    product_id NUMBER PRIMARY KEY,
+    product_name VARCHAR2(100) NOT NULL,
+    requires_refrigeration CHAR(1) NOT NULL,
+    unit_of_measure VARCHAR2(20) DEFAULT 'PCS',
+    CONSTRAINT chk_products_refrigeration
+        CHECK (requires_refrigeration IN ('Y', 'N'))
+);
