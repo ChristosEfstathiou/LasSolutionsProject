@@ -1,7 +1,7 @@
 test_id,supplier_name,product_id,requires_refrigeration,quantity,expected_cpp_exit,expected_db_status,description
-CFG01,Config Supplier,1,Y,95,0,PROCESSED,Milk stored with same-product preference disabled
+CFG01,Config Supplier,1,Y,85,0,PROCESSED,Milk stored with same-product preference disabled
 CFG02,Config Supplier,2,Y,70,0,PROCESSED, Yogurt stored using global best-fit
-CFG03,Config Supplier,2,Y,5,0,PROCESSED, Second Milk line should use best-fit not forced same-product
+CFG03,Config Supplier,1,Y,5,0,PROCESSED, Second Milk line should use best-fit not forced same-product
 CFG04,Config Supplier,4,N,125,0,PROCESSED,Rice stored using global best-fit
 CFG05,Config Supplier,5,N,140,0,PROCESSED,Pasta stored normally
 CFG06,Config Supplier,4,N,10,0,PROCESSED,Second Rice line uses best-fit not forced same-product
